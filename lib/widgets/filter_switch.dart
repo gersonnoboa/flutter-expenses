@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class FilterSwitch extends StatelessWidget {
-  FilterSwitch({
+  const FilterSwitch({
     super.key,
     required this.title,
     required this.subtitle,
