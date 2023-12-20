@@ -1,41 +1,35 @@
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class FilterSwitch extends StatefulWidget {
+class FilterSwitch extends StatelessWidget {
   FilterSwitch({
     super.key,
     required this.title,
     required this.subtitle,
+    required this.onChanged,
+    required this.value,
   });
 
   final String title;
   final String subtitle;
-  bool isSwitchSelected = false;
+  final void Function(bool) onChanged;
+  final bool value;
 
-  @override
-  State<FilterSwitch> createState() => _FilterSwitchState();
-}
-
-class _FilterSwitchState extends State<FilterSwitch> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return SwitchListTile(
-      value: widget.isSwitchSelected,
-      onChanged: (newValue) {
-        setState(() {
-          widget.isSwitchSelected = newValue;
-        });
-      },
+      value: value,
+      onChanged: onChanged,
       title: Text(
-        widget.title,
+        title,
         style: theme.textTheme.titleLarge!.copyWith(
           color: theme.colorScheme.onBackground,
         ),
       ),
       subtitle: Text(
-        widget.subtitle,
+        subtitle,
         style: theme.textTheme.labelMedium!.copyWith(
           color: theme.colorScheme.onBackground,
         ),
